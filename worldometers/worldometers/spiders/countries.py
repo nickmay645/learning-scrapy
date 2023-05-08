@@ -7,4 +7,12 @@ class CountriesSpider(scrapy.Spider):
     start_urls = ["https://www.worldometers.info/world-population/population-by-country/"]
 
     def parse(self, response):
-        pass
+        countries = response.xpath("//td/a")
+        for country in countries:
+            country_name = country.xpath(".//text()").get()
+            country_link = country.xpath(".//@href").get()
+
+            yield {
+                'country_name': country_name,
+                'country_link': country_link
+            }
