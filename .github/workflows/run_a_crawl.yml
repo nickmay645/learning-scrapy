@@ -21,4 +21,6 @@ jobs:
         pip install scrapy autopep8 pylint
 
     - name: Scrapy Crawl
-      run: scrapy crawl spider_name
+      run: |
+        cd /worldometers
+        scrapy crawl worldometers
