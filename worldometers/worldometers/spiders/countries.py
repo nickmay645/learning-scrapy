@@ -1,5 +1,6 @@
 import scrapy
 import logging
+import os
 
 class CountriesSpider(scrapy.Spider):
     name = "countries"
@@ -8,6 +9,15 @@ class CountriesSpider(scrapy.Spider):
 
     def parse(self, response):
         
+        """
+        This function parses a sample response. Some contracts are mingled
+        with this docstring.
+
+        @url https://www.worldometers.info/world-population/population-by-country/
+        @returns items 0 0
+        @returns requests 10
+        """
+
         countries = response.xpath("//td/a")
         
         for country in countries:        
@@ -20,7 +30,20 @@ class CountriesSpider(scrapy.Spider):
 
     def parse_country(self, response):
         
-        country_name = response.request.meta['country_name']
+        """
+        This function parses a sample response. Some contracts are mingled
+        with this docstring.
+
+        @url https://www.worldometers.info/world-population/china-population/
+        @returns items 15
+        @returns requests 0 0
+        @scrapes country_name year population
+        """
+
+        if os.environ.get("SCRAPY_CHECK"):
+            country_name = 'China'
+        else:
+            country_name = response.request.meta['country_name']
 
         rows = response.xpath("(//table[@class='table table-striped table-bordered table-hover table-condensed table-list'])[1]/tbody/tr")
         
