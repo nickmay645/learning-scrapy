@@ -1,4 +1,4 @@
-name: Scrapy Checks
+name: Scrapy Checks - Worldometers - Countries
 
 on:
   push:
