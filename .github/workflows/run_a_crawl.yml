@@ -23,5 +23,5 @@ jobs:
 
     - name: Scrapy Crawl
       run: |
-        cd /worldometers
-        scrapy crawl worldometers
+        cd worldometers/
+        scrapy crawl countries
