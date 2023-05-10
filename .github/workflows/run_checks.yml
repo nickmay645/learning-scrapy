@@ -1,4 +1,4 @@
-name: Scrapy
+name: Scrapy Checks
 
 on:
   push:
@@ -19,9 +19,9 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install scrapy autopep8 pylint
+        pip install -r requirements.txt
 
     - name: Scrapy Crawl
       run: |
         cd worldometers/
-        scrapy check
+        scrapy check --verbose
