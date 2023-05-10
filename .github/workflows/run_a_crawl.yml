@@ -1,7 +1,8 @@
 name: Scrapy Crawl
 
 on:
-  workflow_dispatch:
+  push:
+    branches: [ main ]
 
 jobs:
   scrape:
